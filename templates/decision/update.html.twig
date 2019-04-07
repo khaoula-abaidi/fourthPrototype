@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Modification d'une décision</h1>
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary">Modifier une décision</button>
+    {{ form_end(form) }}
+{% endblock %}

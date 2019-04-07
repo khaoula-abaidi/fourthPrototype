@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste des contributeurs{% endblock %}
+{% block body %}
+<h1>La Liste des contributeurs </h1>
+<div class="container">
+    {% for contributor in contributors %}
+        <div class="text-center text-danger">{{ contributor.login }}</div>
+    {% endfor %}
+</div>
+{% endblock %}

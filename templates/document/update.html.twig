@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h2>Modification de la décision du document {{ document.doi }}</h2>
+    <div class="container">
+        <table class="table">
+            <th>Doi</th>
+            <th>Contenu décision</th>
+            <tbody>
+            <td>{{ document.doi }}</td>
+            <td>
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                        <button type="submit" class="btn btn-primary">Modifier ma décision relative</button>
+                    {{ form_end(form) }}
+            </td>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

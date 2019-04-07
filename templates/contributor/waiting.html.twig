@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Ma Liste de documents en attente de dépôt</h1>
+    <div class="container">
+        <h1>N°{{ contributor.id }} :: {{ contributor.login }}</h1>
+        {% if(waitingdocs | length > 0) %}
+        {% for document in waitingdocs %}
+            <div class="text-center text-danger">
+                DOI: {{ document.doi }}
+            </div>
+            <div class="text-center text-primary">
+                Contenu Décision : {{ document.decision.content }}
+            </div>
+            <a href="{{ path('document_update',{'id':document.id}) }}">Décider</a>
+        {% endfor %}
+        {% else %}
+            <h4 class="text-danger">
+                Vous n'avez pas des documents en attente de dépôt
+            </h4>
+        {% endif %}
+    </div>
+{% endblock %}

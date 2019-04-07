@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Ajout d'une décision</h1>
+    {{ form_start(decisionForm,{'attr':{'novalidate':'novalidate'}}) }}
+    {{ form_widget(decisionForm) }}
+    <button type="submit" class="btn btn-primary">Créer une décision</button>
+    {{ form_end(decisionForm) }}
+{% endblock %}

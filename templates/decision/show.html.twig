@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste des décisions non prises{% endblock %}
+{% block body %}
+    <h1 class="text-primary">La Liste des informations pour les décisions non prises </h1>
+
+     <div class="container">
+            <{{ dump(waitingDoc[0].owner.documents.count) }}
+     </div>
+{% endblock %}

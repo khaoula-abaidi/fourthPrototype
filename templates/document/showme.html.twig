@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container text-center text-primary">
+        {% if(waitingdocs |length >0) %}
+
+        <h1>Liste des documents/decision relatif relié à {{ contributor.login }}</h1>
+        <table class="table">
+            <th>DOI</th>
+            <th>Contenu de la Décision relatif</th>
+            <tbody>
+             {% for document in waitingdocs %}
+                 <tr>
+                     {{ dump(document) }}
+                     <td>{{ document.doi }}</td>
+                     <td>{{ document.decision.content }}</td>
+                 </tr>
+             {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <h1>Aucun document en attente pour le contributeur {{ contributor.login }}</h1>
+        {% endif %}
+    </div>
+{% endblock %}

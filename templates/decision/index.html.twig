@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste des décisions{% endblock %}
+{% block body %}
+    <h1 class="text-primary">La Liste des décisions </h1>
+    <div class="container">
+        {% for decision in decisions %}
+            <b>Decision numéro :
+                <a href="{{ path('decision_update',{'id':decision.id}) }}">{{ decision.id }}</a>
+            </b>
+            <div class="text-right">
+                {% for contributor in decision.contributors %}
+                    Contributor id : {{ contributor.id }} |
+                    Décision contributor: {{ contributor.login }} |
+                {% endfor %}
+            </div>
+            {% for document in decision.documents %}
+                <div class="text-danger">
+                    Document : {{ document.id }}
+                                    +
+                    Decision: {{ document.decision.id }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}
