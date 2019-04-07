@@ -8,8 +8,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Contributor;
 use App\Entity\Decision;
 use App\Form\DecisionType;
+use App\Form\DepositContributorType;
+use App\Form\WaitingDecisionsType;
 use App\Repository\ContributorRepository;
 use App\Repository\DocumentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -77,6 +80,35 @@ class DecisionController extends AbstractController
         }
         return $this->render('decision/create.html.twig',[
             'decisionForm' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/deposit/{id}", name="decision_deposit")
+     * @param Contributor $contributor
+     * @param EntityManagerInterface $manager
+     * @param Request $request
+     * @return Response
+     */
+    public function deposit(Contributor $contributor,DocumentRepository $documentRepository,EntityManagerInterface $manager,Request $request):Response
+    {
+        $waitingdocs = $documentRepository->findAllContributorWaitingDocs($contributor->getId());
+        dump($waitingdocs);die;
+
+        /**
+         * Création d'un formulaire de modification de la décision relatif à chaque document
+         */
+
+        //Creating the form
+        $form = $this->createForm(WaitingDecisionsType::class, $contributor->getDecision());
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($contributor);
+        }
+        return $this->render('decision/deposit.html.twig',[
+            'contributor'=> $contributor,
+            'form' => $form->createView()
         ]);
     }
     /**

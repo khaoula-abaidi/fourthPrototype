@@ -14,7 +14,7 @@ class DocumentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('doi')
+         //   ->add('doi')
          /*   ->add('decision',EntityType::class,[
                 'class' => Decision::class,
                 'placeholder' => 'Sélectionner la décision',
@@ -22,7 +22,7 @@ class DocumentType extends AbstractType
                 'required'=>false
             ])
          */
-         ->add('decision', EntityType::class,
+      /*   ->add('decision', EntityType::class,
              [
                  'class' => Decision::class,
                  'choice_label' => 'content',
@@ -30,6 +30,11 @@ class DocumentType extends AbstractType
                  'multiple' => false,
                //  'data' =>$options['default']
              ])
+      */
+       ->add('decision',DecisionType::class,[
+           'label' => false,
+             'class' =>Decision::class
+         ])
         ;
     }
 

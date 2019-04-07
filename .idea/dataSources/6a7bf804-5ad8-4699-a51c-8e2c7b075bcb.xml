@@ -942,172 +942,236 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="239" parent="15" name="contributor">
+    <table id="239" parent="15" name="conference">
       <Engine>InnoDB</Engine>
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="240" parent="15" name="decision">
+    <table id="240" parent="15" name="contributor">
       <Engine>InnoDB</Engine>
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="241" parent="15" name="document">
+    <table id="241" parent="15" name="decision">
       <Engine>InnoDB</Engine>
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="242" parent="15" name="document_contributor">
+    <table id="242" parent="15" name="document">
       <Engine>InnoDB</Engine>
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="243" parent="15" name="migration_versions">
+    <table id="243" parent="15" name="document_contributor">
       <Engine>InnoDB</Engine>
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <column id="244" parent="239" name="id">
+    <table id="244" parent="15" name="migration_versions">
+      <Engine>InnoDB</Engine>
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <table id="245" parent="15" name="speaker">
+      <Engine>InnoDB</Engine>
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <column id="246" parent="239" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="245" parent="239" name="login">
+    <column id="247" parent="239" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="239" name="decision_id">
-      <Position>3</Position>
-      <DataType>int(11)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="247" parent="239" name="IDX_DA6F9793BDEE7539">
-      <ColNames>decision_id</ColNames>
-      <Type>btree</Type>
-    </index>
     <key id="248" parent="239" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="249" parent="239" name="FK_DA6F9793BDEE7539">
-      <ColNames>decision_id</ColNames>
-      <RefSchemaName>testbd</RefSchemaName>
-      <RefTableName>decision</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="250" parent="240" name="id">
+    <column id="249" parent="240" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="240" name="is_taken">
+    <column id="250" parent="240" name="login">
       <Position>2</Position>
-      <DataType>tinyint(1)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="240" name="content">
+    <column id="251" parent="240" name="decision_id">
       <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
+    <index id="252" parent="240" name="IDX_DA6F9793BDEE7539">
+      <ColNames>decision_id</ColNames>
+      <Type>btree</Type>
+    </index>
     <key id="253" parent="240" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="254" parent="241" name="id">
+    <foreign-key id="254" parent="240" name="FK_DA6F9793BDEE7539">
+      <ColNames>decision_id</ColNames>
+      <RefSchemaName>testbd</RefSchemaName>
+      <RefTableName>decision</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="255" parent="241" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="241" name="doi">
+    <column id="256" parent="241" name="is_taken">
+      <Position>2</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="257" parent="241" name="content">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="258" parent="241" name="deposit">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="259" parent="241" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="260" parent="242" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="261" parent="242" name="doi">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="256" parent="241" name="decision_id">
+    <column id="262" parent="242" name="decision_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="257" parent="241" name="IDX_D8698A76BDEE7539">
+    <index id="263" parent="242" name="IDX_D8698A76BDEE7539">
       <ColNames>decision_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="258" parent="241" name="PRIMARY">
+    <key id="264" parent="242" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="259" parent="241" name="FK_D8698A76BDEE7539">
+    <foreign-key id="265" parent="242" name="FK_D8698A76BDEE7539">
       <ColNames>decision_id</ColNames>
       <RefSchemaName>testbd</RefSchemaName>
       <RefTableName>decision</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="260" parent="242" name="document_id">
+    <column id="266" parent="243" name="document_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="242" name="contributor_id">
+    <column id="267" parent="243" name="contributor_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="262" parent="242" name="IDX_58C6A0F9C33F7837">
+    <index id="268" parent="243" name="IDX_58C6A0F9C33F7837">
       <ColNames>document_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="263" parent="242" name="IDX_58C6A0F97A19A357">
+    <index id="269" parent="243" name="IDX_58C6A0F97A19A357">
       <ColNames>contributor_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="264" parent="242" name="PRIMARY">
+    <key id="270" parent="243" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>document_id
 contributor_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="265" parent="242" name="FK_58C6A0F9C33F7837">
+    <foreign-key id="271" parent="243" name="FK_58C6A0F9C33F7837">
       <ColNames>document_id</ColNames>
       <RefSchemaName>testbd</RefSchemaName>
       <RefTableName>document</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="266" parent="242" name="FK_58C6A0F97A19A357">
+    <foreign-key id="272" parent="243" name="FK_58C6A0F97A19A357">
       <ColNames>contributor_id</ColNames>
       <RefSchemaName>testbd</RefSchemaName>
       <RefTableName>contributor</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="267" parent="243" name="version">
+    <column id="273" parent="244" name="version">
       <Position>1</Position>
       <DataType>varchar(14)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="268" parent="243" name="executed_at">
+    <column id="274" parent="244" name="executed_at">
       <Position>2</Position>
       <Comment>(DC2Type:datetime_immutable)</Comment>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="269" parent="243" name="PRIMARY">
+    <key id="275" parent="244" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>version</ColNames>
       <Primary>1</Primary>
     </key>
+    <column id="276" parent="245" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="277" parent="245" name="conference_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="278" parent="245" name="namespeaker">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="279" parent="245" name="IDX_7B85DB61604B8382">
+      <ColNames>conference_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="280" parent="245" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="281" parent="245" name="FK_7B85DB61604B8382">
+      <ColNames>conference_id</ColNames>
+      <RefSchemaName>testbd</RefSchemaName>
+      <RefTableName>conference</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>

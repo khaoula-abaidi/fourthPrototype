@@ -8,9 +8,12 @@
 
 namespace App\Controller;
 use App\Entity\Contributor;
+use App\Form\DecisionType;
+use App\Form\DepositContributorType;
 use App\Repository\ContributorRepository;
 use App\Repository\DocumentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -34,7 +37,7 @@ class ContributorController extends AbstractController
     }
 
     /**
-     * update the contributor's document decisions
+     * update the contributor's document decision
      * @Route("/update/{id}", name="contributor_update")
      * @return Response
      */
@@ -56,6 +59,28 @@ class ContributorController extends AbstractController
                 'waitingdocs' => $waitingDocs
             ]);
         }
-        //$this->redirectToRoute('contributor_index');
+        //return $this->redirectToRoute('contributor_update');
+    }
+
+    /**
+     * @Route("/show/{id}", name="contributor_show")
+     * @return Response
+     */
+    public function show(Contributor $contributor,DocumentRepository $documentRepository,Request $request): Response{
+
+        $waitingdocs = $documentRepository->findAllContributorWaitingDocs($contributor->getId());
+        /**
+         * Updating the documents contributor by the waiting documents only
+         */
+        foreach ($contributor->getDocuments() as $document)
+             $contributor->removeDocument($document);
+        foreach ($waitingdocs as $document) {
+            $contributor->addDocument($document);
+        }
+        $form = $this->createForm(DepositContributorType::class,$contributor);
+
+        return $this->render('contributor/show.html.twig',[
+                                             'form' => $form->createView()
+            ]);
     }
 }

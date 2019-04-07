@@ -113,6 +113,7 @@ class DocumentController extends AbstractController
         $contributor = $contributorRepository->find($id);
         $waitingDocs = $documentRepository->findAllContributorWaitingDocs($id);
          //dump($waitingDocs);die;
+
      return $this->render('document/showme.html.twig', [
                         'contributor' => $contributor,
                         'waitingdocs' => $waitingDocs

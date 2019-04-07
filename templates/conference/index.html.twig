@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Les conférences</h1>
+    <table class="table">
+        <th>Conférence ID</th>
+        <th>Conférence Nom</th>
+        <th>Liste des Speakers</th>
+        <tbody>
+        {% for conference in conferences %}
+        <tr>
+            <td>{{ conference.id }}</td>
+            <td>{{ conference.name }}</td>
+            <td>
+                {% for speaker in conference.speakers %}
+                    <p>{{ speaker.namespeaker }}</p><br/>
+                {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
